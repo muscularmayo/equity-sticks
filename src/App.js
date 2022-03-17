@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import EquityStick from './EquityStick.js';
 import Tracker from './Tracker.js';
+import RandomSelector from './RandomSelector.js';
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
       students: [],
-      heading: ['Student', 'Absent', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+      classes: [],
     }
     this.changeParentStateStudents = this.changeParentStateStudents.bind(this)
   }
@@ -23,10 +24,12 @@ class App extends Component {
   }
 
   render () {
+    let heading = ['Student', 'Absent', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
     return(
       <div>
         <EquityStick changeParentStateStudents={this.changeParentStateStudents}/>
-        <Tracker heading={this.state.heading} body={this.state.students}/>
+        <Tracker heading={heading} body={this.state.students}/>
+        <RandomSelector students={this.state.students}/>
       </div>
     );
   }

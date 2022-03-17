@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Absent from './Absent.js'
 
 class TableRow extends Component {
   render() {
@@ -7,6 +8,9 @@ class TableRow extends Component {
       <tr>
         <td>
           {row}
+        </td>
+        <td>
+          <Absent />
         </td>
       </tr>
     )
