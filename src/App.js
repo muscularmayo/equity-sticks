@@ -6,8 +6,8 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      students: ['test student 1', 'test student 2'],
-      heading: ['Student', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+      students: [],
+      heading: ['Student', 'Absent', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
     }
     this.changeParentStateStudents = this.changeParentStateStudents.bind(this)
   }
@@ -16,6 +16,9 @@ class App extends Component {
     const students = [...this.state.students]
     students.push(value)
     this.setState({ students: students })
+  }
+
+  componentDidMount () {
 
   }
 

@@ -12,7 +12,7 @@ class Tracker extends Component {
       <table>
         <thead>
           <tr>
-            {heading.map(head => <th>{head}</th>)}
+            {heading.map(head => <th key={head}>{head}</th>)}
           </tr>
         </thead>
         <tbody>
