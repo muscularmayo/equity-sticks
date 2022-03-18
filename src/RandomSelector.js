@@ -11,7 +11,7 @@ class RandomSelector extends Component {
   render() {
     return (
       <div>
-        <button onclick={this.randomize}>
+        <button onClick={this.randomize}>
           Randomly Select
         </button>
         <div>
