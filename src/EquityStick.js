@@ -12,6 +12,9 @@ class EquityStick extends Component {
 
   changeStudentsState (event) {
     this.props.changeParentStateStudents(this.state.value)
+    let currentState = JSON.parse(localStorage.students)
+    currentState.push(this.state.value)
+    localStorage.students = JSON.stringify(currentState);
     this.setState({value: ''})
     event.preventDefault();
   }

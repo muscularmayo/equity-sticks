@@ -15,12 +15,25 @@ class TableRow extends Component {
       absent: false,
       total: 0,
     }
+    this.handleCountChange = this.handleCountChange.bind(this);
+    this.updateTotal = this.updateTotal.bind(this);
+    this.handleAbsentChange = this.handleAbsentChange.bind(this);
   }
 
   handleCountChange (day, value) {
-    //let state = {...this.state}
-    // this.setState({[day]: value})
-    //total needs to reflect
+    // this.setState({[day]: Number(value)})
+    // //total needs to reflect the new values also and self referencing object doesn't seem to work
+    // this.updateTotal()
+
+    this.setState({[day]: Number(value)}, function () {
+      this.updateTotal()
+    });
+    //but what if it hasn't updated yet
+  }
+
+  updateTotal() {
+    let total = Number(this.state.monday) + Number(this.state.tuesday) + Number(this.state.wednesday) + Number(this.state.thursday) + Number(this.state.friday)
+    this.setState({total: total})
   }
 
   handleAbsentChange () {
@@ -42,22 +55,22 @@ class TableRow extends Component {
           <Absent index={this.props.index}/>
         </td>
         <td>
-          <Count day="monday"/>
+          <Count update={this.handleCountChange} day="monday"/>
         </td>
         <td>
-          <Count day="tuesday"/>
+          <Count update={this.handleCountChange} day="tuesday"/>
         </td>
         <td>
-          <Count day="wednesday"/>
+          <Count update={this.handleCountChange} day="wednesday"/>
         </td>
         <td>
-          <Count day="thursday"/>
+          <Count update={this.handleCountChange} day="thursday"/>
         </td>
         <td>
-          <Count day="friday"/>
+          <Count update={this.handleCountChange} day="friday"/>
         </td>
         <td>
-          <Total />
+          <Total value={this.state.total}/>
         </td>
       </tr>
     )

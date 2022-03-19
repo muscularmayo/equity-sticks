@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import EquityStick from './EquityStick.js';
 import Tracker from './Tracker.js';
-import RandomSelector from './RandomSelector.js';
 import './app.css';
 
 class App extends Component {
@@ -21,7 +20,12 @@ class App extends Component {
   }
 
   componentDidMount () {
-
+    if(localStorage.length !== 0) {
+      let students = JSON.parse(localStorage.students);
+      this.setState({students: students})
+    } else {
+      localStorage.students = '[]'
+    }
   }
 
   render () {
@@ -30,7 +34,6 @@ class App extends Component {
       <div>
         <EquityStick changeParentStateStudents={this.changeParentStateStudents}/>
         <Tracker className='heading' heading={heading} body={this.state.students}/>
-        <RandomSelector students={this.state.students}/>
       </div>
     );
   }

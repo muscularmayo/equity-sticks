@@ -12,7 +12,7 @@ class Count extends Component {
 
   handleChange (e) {
     this.setState({count: e.target.value})
-    //this.props.handleCountChange(this.props.day, e.target.value)
+    this.props.update(this.props.day, e.target.value)
   }
 
   render() {
