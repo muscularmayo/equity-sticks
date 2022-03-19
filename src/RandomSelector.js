@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 
 class RandomSelector extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      random: ''
+    }
+  }
 
   randomize () {
     //this.props.students
@@ -15,7 +21,7 @@ class RandomSelector extends Component {
           Randomly Select
         </button>
         <div>
-
+          {this.state.random}
         </div>
       </div>
     )

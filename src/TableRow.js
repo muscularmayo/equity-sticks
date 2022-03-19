@@ -34,6 +34,7 @@ class TableRow extends Component {
   updateTotal() {
     let total = Number(this.state.monday) + Number(this.state.tuesday) + Number(this.state.wednesday) + Number(this.state.thursday) + Number(this.state.friday)
     this.setState({total: total})
+    //this is fine
   }
 
   handleAbsentChange () {
