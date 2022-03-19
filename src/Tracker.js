@@ -16,7 +16,7 @@ class Tracker extends Component {
           </tr>
         </thead>
         <tbody>
-          {body.map((row,i) => <TableRow index={i} key={'row' + i}row={row} />)}
+          {body.map((row,i) => <TableRow index={i} key={'row' + i} name={row} />)}
         </tbody>
       </table>
     )

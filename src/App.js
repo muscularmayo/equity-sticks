@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EquityStick from './EquityStick.js';
 import Tracker from './Tracker.js';
 import RandomSelector from './RandomSelector.js';
+import './app.css';
 
 class App extends Component {
   constructor (props) {
@@ -24,11 +25,11 @@ class App extends Component {
   }
 
   render () {
-    let heading = ['Student', 'Absent', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    let heading = ['Student', 'Absent', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Total']
     return(
       <div>
         <EquityStick changeParentStateStudents={this.changeParentStateStudents}/>
-        <Tracker heading={heading} body={this.state.students}/>
+        <Tracker className='heading' heading={heading} body={this.state.students}/>
         <RandomSelector students={this.state.students}/>
       </div>
     );
