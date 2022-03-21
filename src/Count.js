@@ -10,6 +10,13 @@ class Count extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+  componentDidMount () {
+    this.setState({
+      count: this.props.value
+    })
+
+  }
+
   handleChange (e) {
     this.setState({count: e.target.value})
     this.props.update(this.props.day, e.target.value)

@@ -11,12 +11,21 @@ class EquityStick extends Component {
   }
 
   changeStudentsState (event) {
-    this.props.changeParentStateStudents(this.state.value)
-    let currentState = JSON.parse(localStorage.students)
-    currentState.push(this.state.value)
-    localStorage.students = JSON.stringify(currentState);
-    this.setState({value: ''})
-    event.preventDefault();
+    if(this.props.students.includes(this.state.value)) {
+      alert('please enter a unique name')
+      event.preventDefault();
+      return;
+    } else {
+      this.props.changeParentStateStudents(this.state.value)
+      this.props.addStudentCounts(this.state.value)
+
+      let currentStudentsState = JSON.parse(localStorage.students)
+      currentStudentsState.push(this.state.value)
+      localStorage.students = JSON.stringify(currentStudentsState);
+
+      this.setState({value: ''})
+      event.preventDefault();
+    }
   }
 
   handleChange (event) {

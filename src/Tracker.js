@@ -1,21 +1,14 @@
 import React, {Component} from 'react';
 import TableRow from './TableRow.js';
 import RandomSelector from './RandomSelector.js'
+import ClearAll from './ClearAll.js'
 import './tracker.css';
 
 class Tracker extends Component {
   constructor(props) {
     super(props)
-    let absent = [];
-    for (let i=0; i<this.props.body.length; i++) {
-      absent.push(0)
-    }
-    this.state = {
-      absent: absent
-    }
+    this.changeAbsentState = this.changeAbsentState.bind(this)
   }
-
-
 
   changeAbsentState() {
     //let state = {...this.state}
@@ -34,10 +27,11 @@ class Tracker extends Component {
           </tr>
         </thead>
         <tbody>
-          {body.map((row,i) => <TableRow index={i} key={'row' + i} name={row} />)}
+          {body.map((row,i) => <TableRow currentStudentCountObject={this.props.studentCounts[i]} changeStudentCounts={this.props.changeStudentCounts} index={i} key={'row' + i} name={row} />)}
         </tbody>
       </table>
-      <RandomSelector students={body}/>
+      <RandomSelector availableStudents={this.props.presentStudents} students={body}/>
+      <ClearAll />
       </div>
 
     )

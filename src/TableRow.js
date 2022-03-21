@@ -12,8 +12,8 @@ class TableRow extends Component {
       wednesday: 0,
       thursday: 0,
       friday: 0,
-      absent: false,
       total: 0,
+      absent: false,
     }
     this.handleCountChange = this.handleCountChange.bind(this);
     this.updateTotal = this.updateTotal.bind(this);
@@ -27,6 +27,7 @@ class TableRow extends Component {
 
     this.setState({[day]: Number(value)}, function () {
       this.updateTotal()
+      this.props.changeStudentCounts(value, this.props.name, day)
     });
     //but what if it hasn't updated yet
   }
@@ -40,35 +41,47 @@ class TableRow extends Component {
   handleAbsentChange () {
     //let state = {...this.state}
     //this.setState({absent: !this.state.absent})
+    //arr.splice(this.props.index, 0, name); for adding back into the system
+  }
+
+  componentDidMount () {
+    this.setState({
+      monday: this.props.currentStudentCountObject.monday,
+      tuesday: this.props.currentStudentCountObject.tuesday,
+      wednesday: this.props.currentStudentCountObject.wednesday,
+      thursday: this.props.currentStudentCountObject.thursday,
+      friday: this.props.currentStudentCountObject.friday,
+      total: this.props.currentStudentCountObject.total
+    })
   }
 
   //need to add props for value for all these since we're lifting state up
   //value will correspond to state here, and the props will update everytime we run one of these and change state
 
   render() {
-    let name = this.props.name;
+    let studentName = this.props.name;
     return (
       <tr>
         <td>
-          {name}
+          {studentName}
         </td>
         <td>
           <Absent index={this.props.index}/>
         </td>
         <td>
-          <Count update={this.handleCountChange} day="monday"/>
+          <Count value={this.props.currentStudentCountObject.monday} update={this.handleCountChange} day="monday"/>
         </td>
         <td>
-          <Count update={this.handleCountChange} day="tuesday"/>
+          <Count value={this.props.currentStudentCountObject.tuesday} update={this.handleCountChange} day="tuesday"/>
         </td>
         <td>
-          <Count update={this.handleCountChange} day="wednesday"/>
+          <Count value={this.props.currentStudentCountObject.wednesday} update={this.handleCountChange} day="wednesday"/>
         </td>
         <td>
-          <Count update={this.handleCountChange} day="thursday"/>
+          <Count value={this.props.currentStudentCountObject.thursday} update={this.handleCountChange} day="thursday"/>
         </td>
         <td>
-          <Count update={this.handleCountChange} day="friday"/>
+          <Count value={this.props.currentStudentCountObject.friday} update={this.handleCountChange} day="friday"/>
         </td>
         <td>
           <Total value={this.state.total}/>
