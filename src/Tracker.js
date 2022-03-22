@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import TableRow from './TableRow.js';
 import RandomSelector from './RandomSelector.js'
 import ClearAll from './ClearAll.js'
+import ResetCount from './ResetCount.js'
 import './tracker.css';
 
 class Tracker extends Component {
@@ -27,11 +28,12 @@ class Tracker extends Component {
           </tr>
         </thead>
         <tbody>
-          {body.map((row,i) => <TableRow currentStudentCountObject={this.props.studentCounts[i]} changeStudentCounts={this.props.changeStudentCounts} index={i} key={'row' + i} name={row} />)}
+          {body.map((row,i) => <TableRow handleAbsentChange={this.props.handleAbsentChange} currentStudentCountObject={this.props.studentCounts[i]} changeStudentCounts={this.props.changeStudentCounts} index={i} key={'row' + i} name={row} />)}
         </tbody>
       </table>
-      <RandomSelector availableStudents={this.props.presentStudents} students={body}/>
+      <RandomSelector studentCounts={this.props.studentCounts} availableStudents={this.props.presentStudents} students={body}/>
       <ClearAll />
+      <ResetCount resetStudentCounts={this.props.resetStudentCounts} students={body} studentCounts={this.props.studentCounts}/>
       </div>
 
     )

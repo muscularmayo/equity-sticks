@@ -11,7 +11,7 @@ class Absent extends Component {
 
   handleChange () {
     this.setState({checked: !this.state.checked})
-    //this.props.handleAbsentChange()
+    this.props.handleAbsentChange(this.props.name)
   }
 
   render() {

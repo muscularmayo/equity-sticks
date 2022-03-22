@@ -3,5 +3,9 @@ th {
 }
 
 * {
-  background-color: lightgray;
+  background-color: rgb(137, 179, 177);
+}
+
+input {
+  background-color: white;
 }

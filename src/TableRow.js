@@ -14,6 +14,7 @@ class TableRow extends Component {
       friday: 0,
       total: 0,
       absent: false,
+      notes: '',
     }
     this.handleCountChange = this.handleCountChange.bind(this);
     this.updateTotal = this.updateTotal.bind(this);
@@ -66,7 +67,7 @@ class TableRow extends Component {
           {studentName}
         </td>
         <td>
-          <Absent index={this.props.index}/>
+          <Absent name={studentName} handleAbsentChange={this.props.handleAbsentChange} index={this.props.index}/>
         </td>
         <td>
           <Count value={this.props.currentStudentCountObject.monday} update={this.handleCountChange} day="monday"/>
