@@ -43,6 +43,7 @@ class App extends Component {
     }, function () {
       localStorage.studentCounts = JSON.stringify(newStudentCountsState)
     })
+    // if we change to answered/not answered - we will have to change this here, answered/not answered and just count that
   }
 
   resetStudentCounts (arr) {
@@ -52,11 +53,6 @@ class App extends Component {
       localStorage.studentCounts = JSON.stringify(arr)
       window.location.reload();
     })
-  }
-
-  changePresentStudents () {
-    //arr.splice(this.props.index, 0, name); for adding back into the system
-
   }
 
   handleAbsentChange (name) {
@@ -86,6 +82,7 @@ class App extends Component {
       total: 0,
       notes: '',
     }
+    //this will be changed to name,answered,notAnswered,total,notes, and we can add note stuff
     let newStudentCountsState = [...this.state.studentCounts]
     newStudentCountsState.push(newStudent)
     this.setState({
@@ -93,6 +90,12 @@ class App extends Component {
     })
     localStorage.studentCounts = JSON.stringify(newStudentCountsState)
   }
+
+  /* addNotes(name, notes) {
+    map through the current count, find the one that matches the name we want, and then copy and replace it with our notes
+    copy the whole array of studentCount, then work from there.
+  }
+  */
 
   componentDidMount () {
     if(localStorage.length !== 0) {
@@ -115,6 +118,7 @@ class App extends Component {
 
   render () {
     let heading = ['Student', 'Absent', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Total']
+    //heading would presumably be student, absent, answered, not answered, total
     return(
       <div>
         <EquityStick addStudentCounts={this.addStudentCounts} students={this.state.students} changeParentStateStudents={this.changeParentStateStudents}/>
