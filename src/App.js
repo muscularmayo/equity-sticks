@@ -10,10 +10,10 @@ class App extends Component {
       students: [],
       classes: [],
       presentStudents: [],
-      studentCounts: []
+      studentCounts: [],
+      currentDay: '',
     }
     this.changeParentStateStudents = this.changeParentStateStudents.bind(this)
-    this.changePresentStudents = this.changePresentStudents.bind(this)
     this.addStudentCounts = this.addStudentCounts.bind(this)
     this.changeStudentCounts = this.changeStudentCounts.bind(this)
     this.resetStudentCounts = this.resetStudentCounts.bind(this)
@@ -98,6 +98,24 @@ class App extends Component {
   */
 
   componentDidMount () {
+    const d = new Date();
+    let day = d.getDay()
+    if (day === 0) {
+      day = 'Sunday'
+    } else if (day === 1) {
+      day = 'Monday'
+    } else if (day === 2) {
+      day = 'Tuesday'
+    } else if (day === 3) {
+      day = 'Wednesday'
+    } else if (day === 4) {
+      day = 'Thursday'
+    } else if (day === 5) {
+      day = 'Friday'
+    } else if (day === 6) {
+      day = 'Saturday'
+    }
+
     if(localStorage.length !== 0) {
       let students = JSON.parse(localStorage.students);
       let studentCounts = JSON.parse(localStorage.studentCounts)
@@ -108,7 +126,8 @@ class App extends Component {
       this.setState({
         students: students,
         presentStudents: students,
-        studentCounts: studentCounts
+        studentCounts: studentCounts,
+        currentDay: day,
       })
     } else {
       localStorage.students = '[]'
@@ -122,7 +141,7 @@ class App extends Component {
     return(
       <div>
         <EquityStick addStudentCounts={this.addStudentCounts} students={this.state.students} changeParentStateStudents={this.changeParentStateStudents}/>
-        <Tracker handleAbsentChange={this.handleAbsentChange} resetStudentCounts={this.resetStudentCounts} studentCounts={this.state.studentCounts} changeStudentCounts={this.changeStudentCounts} changePresentStudents={this.changePresentStudents} presentStudents={this.state.presentStudents} heading={heading} body={this.state.students}/>
+        <Tracker currentDay={this.state.currentDay} handleAbsentChange={this.handleAbsentChange} resetStudentCounts={this.resetStudentCounts} studentCounts={this.state.studentCounts} changeStudentCounts={this.changeStudentCounts} changePresentStudents={this.changePresentStudents} presentStudents={this.state.presentStudents} heading={heading} body={this.state.students}/>
       </div>
     );
   }

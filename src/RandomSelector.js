@@ -71,9 +71,11 @@ class RandomSelector extends Component {
           Randomly selects the lowest count student that is not absent
           </div>
         )}
-        <h3 id="random">
-          {this.state.randomStudent}
-        </h3>
+        <div>
+          <span id="random">
+            {this.state.randomStudent}
+          </span>
+        </div>
       </div>
     )
 
