@@ -23,12 +23,19 @@ class App extends Component {
 
   locateStudentValueForCurrentDay (name) {
     let todayCount;
-    for(let i = 0; i < this.state.studentCounts; i++) {
-      if(this.state.studentCounts[i] === name) {
-        todayCount = this.state.studentCounts[i][this.state.currentDay]
+    let currentDay = this.state.currentDay.toLowerCase();
+    if(this.state.currentDay === 'Saturday' || this.state.currentDay === 'Sunday') {
+      console.log(this.state.currentDay)
+      return;
+    }
+
+    for(let i = 0; i < this.state.studentCounts.length; i++) {
+      if(this.state.studentCounts[i].name === name) {
+        todayCount = this.state.studentCounts[i][currentDay]
       }
     }
-    return todayCount;
+    console.log(todayCount)
+    return Number(todayCount);
   }
 
 

@@ -27,7 +27,7 @@ class Count extends Component {
       <div className='count-container'>
           <input
             type="number"
-            value={this.state.count}
+            value={this.props.value}
             onChange={this.handleChange}
             className='count'
             min={0}
