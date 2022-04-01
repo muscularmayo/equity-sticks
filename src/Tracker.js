@@ -31,7 +31,7 @@ class Tracker extends Component {
           {body.map((row,i) => <TableRow handleAbsentChange={this.props.handleAbsentChange} currentStudentCountObject={this.props.studentCounts[i]} changeStudentCounts={this.props.changeStudentCounts} index={i} key={'row' + i} name={row} />)}
         </tbody>
       </table>
-      <RandomSelector studentCounts={this.props.studentCounts} availableStudents={this.props.presentStudents} students={body}/>
+      <RandomSelector locateStudentValueForCurrentDay={this.props.locateStudentValueForCurrentDay} currentDay={this.props.currentDay} changeStudentCount={this.props.changeStudentCounts} studentCounts={this.props.studentCounts} availableStudents={this.props.presentStudents} students={body}/>
       <ClearAll />
       <ResetCount resetStudentCounts={this.props.resetStudentCounts} students={body} studentCounts={this.props.studentCounts}/>
       </div>

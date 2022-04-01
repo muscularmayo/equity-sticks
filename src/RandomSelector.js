@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import AddStudentCount from './AddStudentCount.js'
 import './randomselector.css'
 
 class RandomSelector extends Component {
@@ -75,6 +76,7 @@ class RandomSelector extends Component {
           <span id="random">
             {this.state.randomStudent}
           </span>
+          <AddStudentCount locateStudentValueForCurrentDay={this.props.locateStudentValueForCurrentDay} day={this.props.currentDay} name={this.state.randomStudent} changeStudentCount={this.props.changeStudentCount} />
         </div>
       </div>
     )
