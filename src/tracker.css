@@ -24,3 +24,7 @@ button {
 #random {
   background-color: yellow;
 }
+
+.highlight {
+  background-color: rgb(255, 0, 234);
+}

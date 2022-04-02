@@ -14,6 +14,7 @@ class Tracker extends Component {
   changeAbsentState() {
     //let state = {...this.state}
     //this.setState({absent: !this.state.absent})
+    //this.props.currentStudent
   }
 
   render () {
@@ -28,10 +29,10 @@ class Tracker extends Component {
           </tr>
         </thead>
         <tbody>
-          {body.map((row,i) => <TableRow handleAbsentChange={this.props.handleAbsentChange} currentStudentCountObject={this.props.studentCounts[i]} changeStudentCounts={this.props.changeStudentCounts} index={i} key={'row' + i} name={row} />)}
+          {body.map((row,i) => <TableRow currentStudent={this.props.currentStudent} handleAbsentChange={this.props.handleAbsentChange} currentStudentCountObject={this.props.studentCounts[i]} changeStudentCounts={this.props.changeStudentCounts} index={i} key={'row' + i} name={row} />)}
         </tbody>
       </table>
-      <RandomSelector locateStudentValueForCurrentDay={this.props.locateStudentValueForCurrentDay} currentDay={this.props.currentDay} changeStudentCount={this.props.changeStudentCounts} studentCounts={this.props.studentCounts} availableStudents={this.props.presentStudents} students={body}/>
+      <RandomSelector setCurrentStudent={this.props.setCurrentStudent} locateStudentValueForCurrentDay={this.props.locateStudentValueForCurrentDay} currentDay={this.props.currentDay} changeStudentCount={this.props.changeStudentCounts} studentCounts={this.props.studentCounts} availableStudents={this.props.presentStudents} students={body}/>
       <ClearAll />
       <ResetCount resetStudentCounts={this.props.resetStudentCounts} students={body} studentCounts={this.props.studentCounts}/>
       </div>

@@ -56,6 +56,8 @@ class RandomSelector extends Component {
     this.setState({
       randomStudent: randomStudent
     })
+
+    this.props.setCurrentStudent(randomStudent)
   }
 
   render() {

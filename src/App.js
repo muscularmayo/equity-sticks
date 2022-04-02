@@ -30,6 +30,7 @@ class App extends Component {
       presentStudents: [],
       studentCounts: [],
       currentDay: day,
+      currentStudent: '',
     }
     this.changeParentStateStudents = this.changeParentStateStudents.bind(this)
     this.addStudentCounts = this.addStudentCounts.bind(this)
@@ -37,6 +38,13 @@ class App extends Component {
     this.resetStudentCounts = this.resetStudentCounts.bind(this)
     this.handleAbsentChange = this.handleAbsentChange.bind(this)
     this.locateStudentValueForCurrentDay = this.locateStudentValueForCurrentDay.bind(this)
+    this.setCurrentStudent = this.setCurrentStudent.bind(this)
+  }
+
+  setCurrentStudent (name) {
+    this.setState({
+      currentStudent: name
+    })
   }
 
   locateStudentValueForCurrentDay (name) {
@@ -135,24 +143,6 @@ class App extends Component {
   */
 
   componentDidMount () {
-    const d = new Date();
-    let day = d.getDay()
-    if (day === 0) {
-      day = 'Sunday'
-    } else if (day === 1) {
-      day = 'Monday'
-    } else if (day === 2) {
-      day = 'Tuesday'
-    } else if (day === 3) {
-      day = 'Wednesday'
-    } else if (day === 4) {
-      day = 'Thursday'
-    } else if (day === 5) {
-      day = 'Friday'
-    } else if (day === 6) {
-      day = 'Saturday'
-    }
-
     if(localStorage.length !== 0) {
       let students = JSON.parse(localStorage.students);
       let studentCounts = JSON.parse(localStorage.studentCounts)
@@ -164,7 +154,6 @@ class App extends Component {
         students: students,
         presentStudents: students,
         studentCounts: studentCounts,
-        currentDay: day,
       })
     } else {
       localStorage.students = '[]'
@@ -178,7 +167,7 @@ class App extends Component {
     return(
       <div>
         <EquityStick addStudentCounts={this.addStudentCounts} students={this.state.students} changeParentStateStudents={this.changeParentStateStudents}/>
-        <Tracker locateStudentValueForCurrentDay={this.locateStudentValueForCurrentDay} currentDay={this.state.currentDay} handleAbsentChange={this.handleAbsentChange} resetStudentCounts={this.resetStudentCounts} studentCounts={this.state.studentCounts} changeStudentCounts={this.changeStudentCounts} changePresentStudents={this.changePresentStudents} presentStudents={this.state.presentStudents} heading={heading} body={this.state.students}/>
+        <Tracker currentStudent={this.state.currentStudent} setCurrentStudent={this.setCurrentStudent} locateStudentValueForCurrentDay={this.locateStudentValueForCurrentDay} currentDay={this.state.currentDay} handleAbsentChange={this.handleAbsentChange} resetStudentCounts={this.resetStudentCounts} studentCounts={this.state.studentCounts} changeStudentCounts={this.changeStudentCounts} changePresentStudents={this.changePresentStudents} presentStudents={this.state.presentStudents} heading={heading} body={this.state.students}/>
       </div>
     );
   }
