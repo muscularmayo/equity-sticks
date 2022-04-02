@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/equity-sticks/static/css/main.a2694e7e.css",
-    "main.js": "/equity-sticks/static/js/main.d7488a2a.js",
-    "index.html": "/equity-sticks/index.html",
-    "main.a2694e7e.css.map": "/equity-sticks/static/css/main.a2694e7e.css.map",
-    "main.d7488a2a.js.map": "/equity-sticks/static/js/main.d7488a2a.js.map"
+    "main.css": "/static/css/main.1557448f.css",
+    "main.js": "/static/js/main.89d68e4e.js",
+    "index.html": "/index.html",
+    "main.1557448f.css.map": "/static/css/main.1557448f.css.map",
+    "main.89d68e4e.js.map": "/static/js/main.89d68e4e.js.map"
   },
   "entrypoints": [
-    "static/css/main.a2694e7e.css",
-    "static/js/main.d7488a2a.js"
+    "static/css/main.1557448f.css",
+    "static/js/main.89d68e4e.js"
   ]
 }
