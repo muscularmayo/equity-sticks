@@ -85,7 +85,7 @@ class TableRow extends Component {
           <Count value={this.props.currentStudentCountObject.friday} update={this.handleCountChange} day="friday"/>
         </td>
         <td>
-          <Total value={Number(this.props.currentStudentCountObject.monday + this.props.currentStudentCountObject.tuesday + this.props.currentStudentCountObject.wednesday + this.props.currentStudentCountObject.thursday + this.props.currentStudentCountObject.friday)}/>
+          <Total value={Number(this.props.currentStudentCountObject.monday) + Number(this.props.currentStudentCountObject.tuesday) + Number(this.props.currentStudentCountObject.wednesday) + Number(this.props.currentStudentCountObject.thursday) + Number(this.props.currentStudentCountObject.friday)}/>
         </td>
       </tr>
     )
